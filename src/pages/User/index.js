@@ -1,2 +1,3 @@
-import {User} from './User'
-export {User}
+import {UserList} from './UserList'
+import { AddUser } from './AddUser'
+export {UserList, AddUser}
