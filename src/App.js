@@ -2,7 +2,7 @@ import { Coupon } from 'pages/Coupon'
 import { Customer } from 'pages/Customer'
 import { Home } from 'pages/Home'
 import { Product } from 'pages/Product'
-import { User } from 'pages/Users'
+import { User } from 'pages/User'
 import {Routes, Route} from 'react-router-dom'
 
 
