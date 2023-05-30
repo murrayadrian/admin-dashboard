@@ -55,6 +55,14 @@ const data = [
     },
    
 ];
+const addProduct = () => {
+    data.push({
+        key: 4,
+        name: 'Realme',
+        price: 150,
+        image: 'https://m.media-amazon.com/images/I/51WDCoio+4L.jpg',
+    })
+}
 const updateProduct = (e) => {
     console.log("update", e.target.closest("tr").getAttribute("data-row-key"));
 }
@@ -62,11 +70,13 @@ const deleteProduct = (e) => {
     console.log("delete", e.target.closest("tr").getAttribute("data-row-key"));
 }
 export const AddProduct = () => {
+    
     const [products,setProducts] = useState([data])
-    console.log(products.push({name:'abc'}));
+    const copy = [...products]
+    console.log(copy);
     return (
         <Space direction='vertical'>
-            <Button type="primary">Add product</Button>
+            <Button onClick={addProduct} type="primary">Add product</Button>
             <Table columns={columns} dataSource={data} pagination={{pageSize: 5}}/>
         </Space>
     )
