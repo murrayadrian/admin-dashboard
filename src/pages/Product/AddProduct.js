@@ -29,7 +29,7 @@ const columns = [
         render: () => (
             <Space size="middle">
                 <a onClick={(e)=>updateProduct(e)}>Update</a>
-                <a onClick={deleteProduct}>Delete</a>
+                <a onClick={(e)=>deleteProduct(e)}>Delete</a>
             </Space>
         ),
     },
@@ -58,12 +58,12 @@ const data = [
 const updateProduct = (e) => {
     console.log("update", e.target.closest("tr").getAttribute("data-row-key"));
 }
-const deleteProduct = () => {
+const deleteProduct = (e) => {
     console.log("delete", e.target.closest("tr").getAttribute("data-row-key"));
 }
 export const AddProduct = () => {
     const [products,setProducts] = useState([data])
-    console.log(products);
+    console.log(products.push({name:'abc'}));
     return (
         <Space direction='vertical'>
             <Button type="primary">Add product</Button>
