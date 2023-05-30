@@ -1,8 +1,8 @@
 import { UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, Outlet } from 'react-router-dom';
+import {Helmet} from 'react-helmet'
 
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -18,54 +18,57 @@ const items = [
   getItem('Welcome vinh', '1', <UserOutlined />),
   getItem(<NavLink to={'/'}>DashBoard</NavLink>, '2', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
-    getItem(<NavLink to={'/userlist'}>List Users</NavLink>, '3'),
-    getItem(<NavLink to={'/user/add'}>Add new user</NavLink>, '4'),
-    getItem('Update user', '5'),
-    getItem('Delete user', '6'),
+    getItem(<NavLink to={'/user/list'}>List Users</NavLink>, '3'),
+    getItem(<NavLink to={'/user/add'}>Add user</NavLink>, '4'),
   ]),
-  getItem('Customer', 'sub2', <TeamOutlined />, [getItem('List Customers', '7'), getItem('Export to excel', '8')]),
+
   getItem('Product', 'sub3', <TeamOutlined />, [
-    getItem('List Products', '9'),
-    getItem('Add new product', '10'),
-    getItem('Update product', '11'),
-    getItem('Delete product', '12'),
+    getItem(<NavLink to={'/product/list'}>List Products</NavLink>, '5'),
+    getItem(<NavLink to={'/product/add'}>Add new product</NavLink>, '6'),
   ]),
+
+  getItem('Customer', 'sub2', <TeamOutlined />, [
+    getItem(<NavLink to={'/customer/list'}>List Customers</NavLink>, '7'),
+    getItem(<NavLink to={'/customer/export'}>Export to excel</NavLink>, '8')
+  ]),
+
   getItem('Order', 'sub4', <TeamOutlined />, [
-    getItem('List Orders', '13'),
-    getItem('Update status', '14'),
+    getItem(<NavLink to={'/order/list'}>List Orders</NavLink>, '9'),
   ]),
+
   getItem('Coupon', 'sub5', <TeamOutlined />, [
-    getItem('List Coupons', '15'),
-    getItem('Add new coupon', '16'),
-    getItem('Delete coupon', '17'),
+    getItem(<NavLink to={'/coupon/list'}>List Coupons</NavLink>, '10'),
+    getItem(<NavLink to={'/coupon/add'}>Add new coupon</NavLink>, '11'),
   ]),
 ];
-export const Layouts = ({children}) => {
-  // const [collapsed, setCollapsed] = useState(false);
+export const Layouts = ({title}) => {
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{minHeight: '100vh',}}>
-      <Sider>
+    <>
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+    <Layout style={{ minHeight: '100vh', }}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" items={items} />
       </Sider>
       <Layout>
-        <Header style={{padding: 0,background: colorBgContainer,}}/>
-        <Content style={{margin: '0 16px',}}>
-          <Breadcrumb style={{margin: '16px 0',}}>
+        <Header style={{ padding: 0, background: colorBgContainer, }}>SOME THING</Header>
+        <Content style={{ margin: '0 16px', }}>
+          <Breadcrumb style={{ margin: '16px 0', }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{padding: 24, minHeight: 360, background: colorBgContainer,}}>
-            {children}
+          <div style={{ padding: 24 }}>
+            <Outlet />
           </div>
         </Content>
-        <Footer style={{textAlign: 'center',}}>
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
+    </>
   );
 };

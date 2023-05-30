@@ -1,2 +1,2 @@
-import {Order} from './Order'
-export {Order}
+import {OrderList} from './OrderList'
+export {OrderList}

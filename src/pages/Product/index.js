@@ -1,2 +1,3 @@
-import {Product} from './Product'
-export {Product}
+import {ProductList} from './ProductList'
+import { AddProduct } from './AddProduct'
+export {ProductList, AddProduct}

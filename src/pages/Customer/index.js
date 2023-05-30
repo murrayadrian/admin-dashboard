@@ -1,2 +1,3 @@
-import {Customer} from './Customer'
-export {Customer}
+import {CustomerList} from './CustomerList'
+import { ExportCustomer } from './ExportCustomer'
+export {CustomerList, ExportCustomer}

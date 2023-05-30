@@ -1,23 +1,38 @@
-import { Coupon } from 'pages/Coupon'
-import { Customer } from 'pages/Customer'
+import { AddCoupon, CouponList } from 'pages/Coupon'
+import { ExportCustomer, CustomerList } from 'pages/Customer'
 import { Home } from 'pages/Home'
-import { Product } from 'pages/Product'
 import { AddUser, UserList } from 'pages/User'
 import { Layouts } from "components/Layouts"
 import { Routes, Route } from 'react-router-dom'
 import { Login } from 'pages/Login'
+import { AddProduct, ProductList } from 'pages/Product'
+import { OrderList } from 'pages/Order'
 
 
 const App = () => {
     return (
         <Routes>
             <Route path="/" element={<Layouts />}>
-                <Route index path="/home" element={<Home />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/customer" element={<Customer />} />
-                <Route path="/userlist" element={<UserList />} />
-                <Route path="/user/add" element={<AddUser />} />
-                <Route path="/coupon" element={<Coupon />} />
+                <Route index element={<Home />} />
+                <Route path="user">
+                    <Route path="list" element={<UserList />} />
+                    <Route path="add" element={<AddUser />} />
+                </Route>
+                <Route path="product">
+                    <Route path="list" element={<ProductList/>}/>
+                    <Route path="add" element={<AddProduct/>}/>
+                </Route>
+                <Route path="customer">
+                    <Route path="list" element={<CustomerList/>}/>
+                    <Route path="export" element={<ExportCustomer/>}/>
+                </Route>
+                <Route path="order">
+                    <Route path="list" element={<OrderList/>}/>
+                </Route>
+                <Route path="coupon">
+                    <Route path="list" element={<CouponList/>}/>
+                    <Route path="add" element={<AddCoupon/>}/>
+                </Route>
             </Route>
             <Route path="/login" element={<Login/>}/>
         </Routes>
