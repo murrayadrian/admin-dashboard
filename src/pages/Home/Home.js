@@ -12,6 +12,7 @@ import {
   Legend,
 } from 'chart.js';
 
+
 const DashboardCard = ({icon,title,value}) => {
   return(
     <Card style={cardStyle}>
@@ -74,7 +75,7 @@ const data = {
   datasets: [
     {
       label: 'Revenue',
-      data: labels.map(() => Math.floor(Math.random(0,1)*1000)+1),
+      data: labels.map(() => Math.floor(Math.random(0,1)*20000000)+1),
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
   ],

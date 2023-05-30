@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import {Helmet} from 'react-helmet'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -41,7 +41,7 @@ const items = [
     getItem(<NavLink to={'/coupon/add'}>Add new coupon</NavLink>, '11'),
   ]),
 ];
-export const Layouts = ({title}) => {
+export const Layouts = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -49,7 +49,7 @@ export const Layouts = ({title}) => {
   return (
     <>
     <Helmet>
-      <title>{title}</title>
+      <title>vinh</title>
     </Helmet>
     <Layout style={{ minHeight: '100vh', }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
@@ -59,10 +59,10 @@ export const Layouts = ({title}) => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer, }}>SOME THING</Header>
         <Content style={{ margin: '0 16px', }}>
-          <Breadcrumb style={{ margin: '16px 0', }}>
+          {/* <Breadcrumb style={{ margin: '16px 0', }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          </Breadcrumb> */}
           <div style={{ padding: 24 }}>
             <Outlet />
           </div>
