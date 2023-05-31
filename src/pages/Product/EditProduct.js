@@ -1,22 +1,23 @@
 import { Button, Form, Input, Typography } from "antd";
 import api from "api/config";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const EditProduct = ({ products, setProducts }) => {
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState(0);
   const [editImage, setEditImage] = useState("");
+  const navigate = useNavigate();
   const { id } = useParams();
-  const find = products.find((product) => product.id.toString() === id);
+  const product = products.find((product) => product.id.toString() === id);
 
   useEffect(() => {
-    if (find) {
-      setEditName(find.name);
-      setEditPrice(find.price);
-      setEditImage(find.img);
+    if (product) {
+      setEditName(product.name);
+      setEditPrice(product.price);
+      setEditImage(product.img);
     }
-  }, [find, setEditName, setEditPrice, setEditImage]);
+  }, [product]);
   const [form] = Form.useForm();
 
   const handleEdit = async (id) => {
@@ -32,6 +33,7 @@ export const EditProduct = ({ products, setProducts }) => {
         product.id.toString() === id ? { ...response.data } : product
       )
     );
+    navigate("/products/show");
   };
   return (
     <>
@@ -59,7 +61,7 @@ export const EditProduct = ({ products, setProducts }) => {
           />
         </Form.Item>
         <Form.Item {...buttonItemLayout}>
-          <Button type="primary" onClick={() => handleEdit(find.id)}>
+          <Button type="primary" onClick={() => handleEdit(product.id)}>
             Update
           </Button>
         </Form.Item>

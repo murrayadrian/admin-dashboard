@@ -1,4 +1,4 @@
-import { DollarCircleOutlined, ShoppingCartOutlined, ShoppingOutlined, UserOutlined } from "@ant-design/icons"
+import { DollarCircleOutlined, ShoppingOutlined, UserOutlined } from "@ant-design/icons"
 import { Space, Statistic, Typography } from "antd"
 import Card from "antd/es/card/Card"
 import { Bar } from "react-chartjs-2"

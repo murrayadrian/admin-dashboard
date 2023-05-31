@@ -5,7 +5,7 @@ export const AddProduct = ({ products, setProducts, name, setName, price, setPri
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
-        const newProduct = { id, name: name, price: price, img: image }
+        const newProduct = { id, name, price, img: image }
         console.log(products);
         const response = await api.post('/products', newProduct)
         const listProduct = [...products, response.data]
