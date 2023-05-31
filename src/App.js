@@ -8,7 +8,6 @@ import { Login } from 'pages/Login'
 import { AddProduct, ShowProducts } from 'pages/Product'
 import { OrderList } from 'pages/Order'
 import { useState } from 'react'
-import api from 'api/config'
 import { ProductDetail } from 'pages/Product'
 import { EditProduct } from 'pages/Product'
 
@@ -17,24 +16,7 @@ const App = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [image, setImage] = useState('')
-    const [editName, setEditName] = useState('')
-    const [editPrice, setEditPrice] = useState(0)
-    const [editImage, setEditImage] = useState('')
-
-    const handleSubmit = async (e) => {
-        console.log("submit");
-        e.preventDefault();
-        const id = products.length ? products[products.length - 1].key + 1 : 1;
-        const newProduct = { id, name: name, price: price, image: image }
-        console.log(products);
-        const response = await api.post('/products', newProduct)
-        const listProduct = [...products, response.data]
-        setProducts(listProduct)
-        setName('')
-        setPrice(0)
-        setImage('')
-    }
-
+    
     return (
         <Routes>
             <Route path="/" element={<Layouts />}>
@@ -49,17 +31,16 @@ const App = () => {
                         setProducts={setProducts} />}
                     />
                     <Route path="add" element={<AddProduct
-                        handleSubmit={handleSubmit}
+                        products={products}
+                        setProducts={setProducts}
                         name={name} setName={setName}
                         price={price} setPrice={setPrice}
                         image={image} setImage={setImage} />}
                     />
                     <Route path=":id" element={<ProductDetail products={products} />} />
                     <Route path="edit/:id" element={<EditProduct
-                        products={products} setProducts={setProducts}
-                        editName={editName} setEditName={setEditName}
-                        editPrice={editPrice} setEditPrice={setEditPrice}
-                        editImage={editImage} setEditImage={setEditImage} />} />
+                        products={products} setProducts={setProducts}/>}
+                    />
                 </Route>
                 <Route path="customer">
                     <Route path="list" element={<CustomerList />} />

@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "name": "iphone",
+      "name": "iphone 4",
       "price": "100",
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     },
@@ -16,6 +16,18 @@
       "id": 3,
       "name": "iphone 6",
       "price": 10,
+      "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
+    },
+    {
+      "id": 4,
+      "name": "samsung",
+      "price": "200",
+      "image": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
+    },
+    {
+      "id": 5,
+      "name": "samsung2",
+      "price": "10",
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     }
   ]

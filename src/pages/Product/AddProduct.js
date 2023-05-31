@@ -1,25 +1,19 @@
 import { Button, Form, Input, Typography } from "antd"
+import api from 'api/config'
 
-
-
-const formItemLayout =
-{
-    labelCol: {
-        span: 4,
-    },
-    wrapperCol: {
-        span: 14,
-    },
-}
-const buttonItemLayout =
-{
-    wrapperCol: {
-        span: 14,
-        offset: 4,
-    },
-}
-
-export const AddProduct = ({ handleSubmit, name, setName, price, setPrice, image, setImage }) => {
+export const AddProduct = ({ products, setProducts, name, setName, price, setPrice, image, setImage }) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = products.length ? products[products.length - 1].key + 1 : 1;
+        const newProduct = { id, name: name, price: price, img: image }
+        console.log(products);
+        const response = await api.post('/products', newProduct)
+        const listProduct = [...products, response.data]
+        setProducts(listProduct)
+        setName('')
+        setPrice(0)
+        setImage('')
+    }
     const [form] = Form.useForm();
     return (
         <>
@@ -45,6 +39,22 @@ export const AddProduct = ({ handleSubmit, name, setName, price, setPrice, image
 
         </>
     )
+}
+const formItemLayout =
+{
+    labelCol: {
+        span: 4,
+    },
+    wrapperCol: {
+        span: 14,
+    },
+}
+const buttonItemLayout =
+{
+    wrapperCol: {
+        span: 14,
+        offset: 4,
+    },
 }
 
 
