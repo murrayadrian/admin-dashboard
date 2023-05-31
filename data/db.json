@@ -11,6 +11,18 @@
       "name": "iphone 5",
       "price": 10,
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
+    },
+    {
+      "id": 3,
+      "name": "samsung",
+      "price": "10",
+      "img": "abc"
+    },
+    {
+      "id": 4,
+      "name": "a",
+      "price": 0,
+      "img": "a"
     }
   ]
 }

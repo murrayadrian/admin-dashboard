@@ -3,7 +3,7 @@ import api from 'api/config'
 import { Product } from './Product';
 import styled from 'styled-components';
 
-export const ShowProducts = ({ products, setProducts }) => {
+export const ShowProducts = ({ products, setProducts, handleDelete }) => {
     useEffect(() => {
         const fetchProduct = async () => {
             const response = await api.get('/products')
@@ -12,11 +12,6 @@ export const ShowProducts = ({ products, setProducts }) => {
         fetchProduct()
     }, [products, setProducts])
 
-    const handleDelete= async(id)=>{
-        await api.delete(`/products/${id}`)
-        const fillter = products.filter((product) => product.id.toString !== id);
-        setProducts(fillter)
-      }
     return (
         <STable>
             <thead>

@@ -10,13 +10,18 @@ import { OrderList } from 'pages/Order'
 import { useState } from 'react'
 import { ProductDetail } from 'pages/Product'
 import { EditProduct } from 'pages/Product'
-
+import api from "api/config"
 const App = () => {
     const [products, setProducts] = useState([])
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [image, setImage] = useState('')
     
+    const handleDelete = async(id) => {
+        await api.delete(`/products/${id}`)
+        const fillter = products.filter((product) => product.id.toString !== id);
+        setProducts(fillter)
+    }
     return (
         <Routes>
             <Route path="/" element={<Layouts />}>
@@ -28,7 +33,8 @@ const App = () => {
                 <Route path="products">
                     <Route path="show" element={<ShowProducts
                         products={products}
-                        setProducts={setProducts} />}
+                        setProducts={setProducts}
+                        handleDelete={handleDelete} />}
                     />
                     <Route path="add" element={<AddProduct
                         products={products}
@@ -37,7 +43,10 @@ const App = () => {
                         price={price} setPrice={setPrice}
                         image={image} setImage={setImage} />}
                     />
-                    <Route path=":id" element={<ProductDetail products={products} />} />
+                    <Route path=":id" element={<ProductDetail
+                        products={products}
+                        handleDelete={handleDelete}/>}
+                    />
                     <Route path="edit/:id" element={<EditProduct
                         products={products} setProducts={setProducts}/>}
                     />

@@ -1,7 +1,9 @@
 import { Button, Form, Input, Typography } from "antd"
 import api from 'api/config'
+import { useNavigate } from "react-router-dom"
 
 export const AddProduct = ({ products, setProducts, name, setName, price, setPrice, image, setImage }) => {
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
@@ -13,6 +15,7 @@ export const AddProduct = ({ products, setProducts, name, setName, price, setPri
         setName('')
         setPrice(0)
         setImage('')
+        navigate("/products/show")
     }
     const [form] = Form.useForm();
     return (

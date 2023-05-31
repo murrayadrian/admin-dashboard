@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom"
+import { Button } from "antd";
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components";
 
-export const ProductDetail = ({ products }) => {
+export const ProductDetail = ({ products, handleDelete }) => {
   const { id } = useParams();
-  const find = products.find((product) => product.id.toString() === id);
+  const product = products.find((product) => product.id.toString() === id);
 
   return (
     <>
@@ -18,11 +19,11 @@ export const ProductDetail = ({ products }) => {
           </tr>
         </thead>
         <tbody>
-          <td>{find.name}</td>
-          <td>{find.price}</td>
-          <td><img src={find.img} alt="img" style={{width:50,height:50}}/></td>
-          <td>update</td>
-          <td>delete</td>
+          <td>{product.name}</td>
+          <td>{product.price}</td>
+          <td><img src={product.img} alt="img" style={imgStyle}/></td>
+          <td><Link to={`/products/edit/${product.id}`}>Update</Link></td>
+          <td><Button onClick={()=>handleDelete(product.id)}type="primary">Delete</Button></td>
         </tbody>
       </STable>
     </>
@@ -37,3 +38,7 @@ const STable = styled.table`
         padding: 8px;
     }
 `
+const imgStyle = {
+  width: 50,
+  height: 50
+}
