@@ -2,19 +2,19 @@
   "products": [
     {
       "id": 1,
-      "name": "abc",
+      "name": "iphone",
       "price": "100",
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     },
     {
       "id": 2,
-      "name": "a",
+      "name": "iphone 5",
       "price": 10,
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     },
     {
       "id": 3,
-      "name": "a",
+      "name": "iphone 6",
       "price": 10,
       "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     }
