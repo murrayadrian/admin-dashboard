@@ -20,7 +20,7 @@ export const ProductDetail = ({ products }) => {
         <tbody>
           <td>{find.name}</td>
           <td>{find.price}</td>
-          <td><img src={find.image} alt="img" style={{width:50,height:50}}/></td>
+          <td><img src={find.img} alt="img" style={{width:50,height:50}}/></td>
           <td>update</td>
           <td>delete</td>
         </tbody>

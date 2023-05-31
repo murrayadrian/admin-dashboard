@@ -4,19 +4,19 @@
       "id": 1,
       "name": "abc",
       "price": "100",
-      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
+      "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     },
     {
       "id": 2,
       "name": "a",
       "price": 10,
-      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
+      "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     },
     {
       "id": 3,
       "name": "a",
       "price": 10,
-      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
+      "img": "https://www.mobilebd.co/wp-content/uploads/2022/09/Apple-iPhone-10-Official-Image.png"
     }
   ]
 }
