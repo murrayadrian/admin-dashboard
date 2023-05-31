@@ -17,12 +17,15 @@ const App = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [image, setImage] = useState('')
-    
+    const [editName, setEditName] = useState('')
+    const [editPrice, setEditPrice] = useState(0)
+    const [editImage, setEditImage] = useState('')
+
     const handleSubmit = async (e) => {
         console.log("submit");
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
-        const newProduct = {id, name:name, price:price, image:image}
+        const newProduct = { id, name: name, price: price, image: image }
         console.log(products);
         const response = await api.post('/products', newProduct)
         const listProduct = [...products, response.data]
@@ -31,13 +34,7 @@ const App = () => {
         setPrice(0)
         setImage('')
     }
-    // const handleEdit = async (id) => {
-    //     const response = await api.put(`/products/${id}`, EditProduct)
-    //     setProducts(products.map((product)=> product.key === id ? {...response.data} : product))
-    //     setName('')
-    //     setPrice(0)
-    //     setImage('')
-    // }
+
     return (
         <Routes>
             <Route path="/" element={<Layouts />}>
@@ -49,30 +46,34 @@ const App = () => {
                 <Route path="products">
                     <Route path="show" element={<ShowProducts
                         products={products}
-                        setProducts={setProducts}/>}
+                        setProducts={setProducts} />}
                     />
                     <Route path="add" element={<AddProduct
                         handleSubmit={handleSubmit}
                         name={name} setName={setName}
                         price={price} setPrice={setPrice}
-                        image={image}  setImage={setImage}/>}
+                        image={image} setImage={setImage} />}
                     />
-                    <Route path=":id" element={<ProductDetail products={products}/>}/>
-                    <Route path="edit" element={<EditProduct/>}/>
+                    <Route path=":id" element={<ProductDetail products={products} />} />
+                    <Route path="edit/:id" element={<EditProduct
+                        products={products} setProducts={setProducts}
+                        editName={editName} setEditName={setEditName}
+                        editPrice={editPrice} setEditPrice={setEditPrice}
+                        editImage={editImage} setEditImage={setEditImage} />} />
                 </Route>
                 <Route path="customer">
-                    <Route path="list" element={<CustomerList/>}/>
-                    <Route path="export" element={<ExportCustomer/>}/>
+                    <Route path="list" element={<CustomerList />} />
+                    <Route path="export" element={<ExportCustomer />} />
                 </Route>
                 <Route path="order">
-                    <Route path="list" element={<OrderList/>}/>
+                    <Route path="list" element={<OrderList />} />
                 </Route>
                 <Route path="coupon">
-                    <Route path="list" element={<CouponList/>}/>
-                    <Route path="add" element={<AddCoupon/>}/>
+                    <Route path="list" element={<CouponList />} />
+                    <Route path="add" element={<AddCoupon />} />
                 </Route>
             </Route>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Login />} />
         </Routes>
     )
 }

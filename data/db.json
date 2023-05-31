@@ -2,21 +2,21 @@
   "products": [
     {
       "id": 1,
-      "name": "Iphone",
-      "price": 100,
-      "image": "https://i2-prod.mirror.co.uk/incoming/article11159435.ece/ALTERNATES/n310p/0_Apple-launch-iPhone-X-Cupertino-USA-12-Sep-2017.jpg"
+      "name": "abc",
+      "price": "100",
+      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
     },
     {
       "id": 2,
-      "name": "Samsung",
-      "price": 200,
-      "image": "https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_28973/samsung-galaxy-_main_481_450.png.webp"
+      "name": "a",
+      "price": 10,
+      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
     },
     {
       "id": 3,
-      "name": "Realme",
-      "price": 150,
-      "image": "https://m.media-amazon.com/images/I/51WDCoio+4L.jpg"
+      "name": "a",
+      "price": 10,
+      "img": "https://cdn.tgdd.vn/Products/Images/42/114111/iphone-x-256gb-a1-600x600.jpg"
     }
   ]
 }
