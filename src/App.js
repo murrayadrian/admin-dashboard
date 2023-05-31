@@ -5,9 +5,9 @@ import { AddUser, UserList } from 'pages/User'
 import { Layouts } from "components/Layouts"
 import { Routes, Route } from 'react-router-dom'
 import { Login } from 'pages/Login'
-import { AddProduct, ProductList } from 'pages/Product'
+import { AddProduct, ShowProducts } from 'pages/Product'
 import { OrderList } from 'pages/Order'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import api from 'api/config'
 import { ProductDetail } from 'pages/Product'
 import { EditProduct } from 'pages/Product'
@@ -17,9 +17,9 @@ const App = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [image, setImage] = useState('')
-
-
+    
     const handleSubmit = async (e) => {
+        console.log("submit");
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
         const newProduct = {id, name:name, price:price, image:image}
@@ -46,8 +46,8 @@ const App = () => {
                     <Route path="list" element={<UserList />} />
                     <Route path="add" element={<AddUser />} />
                 </Route>
-                <Route path="product">
-                    <Route path="list" element={<ProductList
+                <Route path="products">
+                    <Route path="show" element={<ShowProducts
                         products={products}
                         setProducts={setProducts}/>}
                     />
@@ -57,7 +57,7 @@ const App = () => {
                         price={price} setPrice={setPrice}
                         image={image}  setImage={setImage}/>}
                     />
-                    <Route path="detail/:id" element={<ProductDetail/>}/>
+                    <Route path=":id" element={<ProductDetail products={products}/>}/>
                     <Route path="edit" element={<EditProduct/>}/>
                 </Route>
                 <Route path="customer">

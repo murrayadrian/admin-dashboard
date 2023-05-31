@@ -19,8 +19,10 @@ import { useLocation } from "react-router-dom"
 // }
 
 export const EditProduct = () => {
-  const location = useLocation()
-  console.log(location.state);
+  console.log("EditProduct");
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  const id = params.get('id')
     // const [form] = Form.useForm();
     // return (
     //     <>

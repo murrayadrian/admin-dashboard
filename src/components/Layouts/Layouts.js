@@ -23,8 +23,8 @@ const items = [
   ]),
 
   getItem('Product', 'sub3', <TeamOutlined />, [
-    getItem(<NavLink to={'/product/list'}>List Products</NavLink>, '5'),
-    getItem(<NavLink to={'/product/add'}>Add product</NavLink>, '6'),
+    getItem(<NavLink to={'/products/show'}>Show Products</NavLink>, '5'),
+    getItem(<NavLink to={'/products/add'}>Add product</NavLink>, '6'),
   ]),
 
   getItem('Customer', 'sub2', <TeamOutlined />, [
