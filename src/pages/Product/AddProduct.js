@@ -1,84 +1,50 @@
-import { Button, Space, Table } from 'antd';
-import { useState } from 'react';
+import { Button, Form, Input, Typography } from "antd"
 
-const imgStyle = {
-    width: 50,
-    height: 50
+
+
+const formItemLayout =
+{
+    labelCol: {
+        span: 4,
+    },
+    wrapperCol: {
+        span: 14,
+    },
 }
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        render: (text) => <span>{text}</span>,
+const buttonItemLayout =
+{
+    wrapperCol: {
+        span: 14,
+        offset: 4,
     },
-    {
-        title: 'Price',
-        dataIndex: 'price',
-        key: 'price',
-    },
-    {
-        title: 'Image',
-        dataIndex: 'image',
-        key: 'image',
-        render:(value)=><img style={imgStyle} src={value} alt="img"/>
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: () => (
-            <Space size="middle">
-                <a onClick={(e)=>updateProduct(e)}>Update</a>
-                <a onClick={(e)=>deleteProduct(e)}>Delete</a>
-            </Space>
-        ),
-    },
-];
-const data = [
-    {
-        key: 1,
-        name: 'Iphone',
-        price: 100,
-        image: 'https://i2-prod.mirror.co.uk/incoming/article11159435.ece/ALTERNATES/n310p/0_Apple-launch-iPhone-X-Cupertino-USA-12-Sep-2017.jpg',
-    },
-    {
-        key: 2,
-        name: 'Samsung',
-        price: 200,
-        image: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_28973/samsung-galaxy-_main_481_450.png.webp',
-    },
-    {
-        key: 3,
-        name: 'Realme',
-        price: 150,
-        image: 'https://m.media-amazon.com/images/I/51WDCoio+4L.jpg',
-    },
-   
-];
-const addProduct = () => {
-    data.push({
-        key: 4,
-        name: 'Realme',
-        price: 150,
-        image: 'https://m.media-amazon.com/images/I/51WDCoio+4L.jpg',
-    })
 }
-const updateProduct = (e) => {
-    console.log("update", e.target.closest("tr").getAttribute("data-row-key"));
-}
-const deleteProduct = (e) => {
-    console.log("delete", e.target.closest("tr").getAttribute("data-row-key"));
-}
-export const AddProduct = () => {
-    
-    const [products,setProducts] = useState([data])
-    const copy = [...products]
-    console.log(copy);
+
+export const AddProduct = ({ handleSubmit, name, setName, price, setPrice, image, setImage }) => {
+    const [form] = Form.useForm();
     return (
-        <Space direction='vertical'>
-            <Button onClick={addProduct} type="primary">Add product</Button>
-            <Table columns={columns} dataSource={data} pagination={{pageSize: 5}}/>
-        </Space>
+        <>
+            <Typography.Title level={4}>Add Product</Typography.Title>
+            <Form
+                {...formItemLayout}
+                layout='horizontal'
+                form={form}
+            >
+                <Form.Item label="Name">
+                    <Input value={name} onChange={(e)=>setName(e.target.value)} placeholder="product name" />
+                </Form.Item>
+                <Form.Item label="Price">
+                    <Input value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="input placeholder" />
+                </Form.Item>
+                <Form.Item label="Upload image">
+                    <Input value={image} onChange={(e)=>setImage(e.target.value)}placeholder="img" />
+                </Form.Item>
+                <Form.Item {...buttonItemLayout}>
+                    <Button type="primary" onClick={handleSubmit}>Submit</Button>
+                </Form.Item>
+            </Form>
+
+        </>
     )
 }
+
 

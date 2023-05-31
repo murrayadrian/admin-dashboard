@@ -1,59 +1,66 @@
-import { Table } from "antd"
-import { getProducts } from "api"
-import { useEffect, useState } from "react"
+import {Space, Table } from 'antd';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from 'api/config'
+const imgStyle = {
+    width: 50,
+    height: 50
+}
 
-export const ProductList = () => {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  useEffect(()=>{
-    setLoading(true)
-    getProducts().then((res)=>{
-      setProducts(res.users)
-      setLoading(false)
-    })
-  },[])
+
+const displayProduct = (e) => {
+    console.log('display', e.target.closest("tr").getAttribute("data-row-key"));
+}
+
+const deleteProduct = (e) => {
+    console.log("delete", e.target.closest("tr").getAttribute("data-row-key"));
+}
+export const ProductList = ({products, setProducts}) => {
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: (text) => <a onClick={(e) => displayProduct(e)}>{text}</a>,
+        },
+        {
+            title: 'Price',
+            dataIndex: 'price',
+            key: 'price',
+        },
+        {
+            title: 'Image',
+            dataIndex: 'image',
+            key: 'image',
+            render:(value)=><img style={imgStyle} src={value} alt="img"/>
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: () => (
+                <Space size="middle">
+                    <a href=""onClick={(e)=>updateProduct(e)}>Update</a>
+                    <a onClick={(e)=>deleteProduct(e)}>Delete</a>
+                </Space>
+            ),
+        },
+    ];
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log('use effect');
+        const fetchProduct = async () => {
+            const response = await api.get('/products')
+            setProducts(response.data)
+        }
+        fetchProduct()
+    },[])
+    const updateProduct = (e) => {
+       let id = e.target.closest("tr").getAttribute("data-row-key");
+       console.log(id);
+       navigate("/product/edit",{state:{id}});
+    }
     return (
-    <div>
-        <Table
-        loading={loading}
-        columns={columns}
-        dataSource={products}
-        pagination={{pageSize: 5}}
-        />
-    </div>
+        <Table columns={columns} dataSource={products} pagination={{pageSize: 5}}/>
     )
 }
-const columns = [
-  {
-    title: 'name',
-    dataIndex: 'firstName',
-    width: 150,
-  },
-  {
-    title: 'username',
-    dataIndex: 'username',
-  },
-  {
-    title: 'email',
-    dataIndex: 'email',
-    width: 150,
-  },
-  {
-    title: 'phone',
-    dataIndex: 'phone',
-  },
-  {
-    title: 'city',
-    dataIndex: 'address',
-    render: (value) => <div>{value.city}</div>
-  },
-  {
-    title: 'picture',
-    dataIndex: 'image',
-    render:(value)=><img style={imgStyle} src={value} alt='img'/>,
-  }
-];
-const imgStyle = {
-  width: 100,
-  height: 100
-}
+

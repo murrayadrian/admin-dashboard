@@ -24,7 +24,7 @@ const items = [
 
   getItem('Product', 'sub3', <TeamOutlined />, [
     getItem(<NavLink to={'/product/list'}>List Products</NavLink>, '5'),
-    getItem(<NavLink to={'/product/add'}>Add new product</NavLink>, '6'),
+    getItem(<NavLink to={'/product/add'}>Add product</NavLink>, '6'),
   ]),
 
   getItem('Customer', 'sub2', <TeamOutlined />, [
@@ -54,7 +54,7 @@ export const Layouts = () => {
     <Layout style={{ minHeight: '100vh', }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" items={items} />
+        <Menu theme="dark" mode="inline" items={items} />
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer, }}>SOME THING</Header>
