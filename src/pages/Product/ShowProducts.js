@@ -1,16 +1,7 @@
-import { useEffect } from 'react';
-import api from 'api/config'
 import { Product } from './Product';
 import styled from 'styled-components';
 
-export const ShowProducts = ({ products, setProducts, handleDelete }) => {
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const response = await api.get('/products')
-            setProducts(response.data)
-        }
-        fetchProduct()
-    }, [products, setProducts])
+export const ShowProducts = ({ products, handleDelete }) => {
 
     return (
         <STable>

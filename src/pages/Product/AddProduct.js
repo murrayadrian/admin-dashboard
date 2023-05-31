@@ -8,7 +8,6 @@ export const AddProduct = ({ products, setProducts, name, setName, price, setPri
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
         const newProduct = { id, name, price, img: image }
-        console.log(products);
         const response = await api.post('/products', newProduct)
         const listProduct = [...products, response.data]
         setProducts(listProduct)

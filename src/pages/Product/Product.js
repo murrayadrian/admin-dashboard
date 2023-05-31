@@ -9,7 +9,7 @@ export const Product = ({product, handleDelete}) => {
         <td>{product.price}</td>
         <td><img src={product.img} alt="img" style={imgStyle}/></td>
         <td><Link to={`/products/edit/${product.id}`}>Update</Link></td>
-        <td><Button onClick={()=>handleDelete(product.id)}type="primary">Delete</Button></td>
+        <td><Button onClick={()=>handleDelete(product.id)}type="primary" danger>Delete</Button></td>
     </tr>
   )
 }

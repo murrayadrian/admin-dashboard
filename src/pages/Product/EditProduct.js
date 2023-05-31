@@ -18,8 +18,7 @@ export const EditProduct = ({ products, setProducts }) => {
       setEditImage(product.img);
     }
   }, [product]);
-  const [form] = Form.useForm();
-
+  
   const handleEdit = async (id) => {
     const updatedProduct = {
       id,
@@ -35,6 +34,7 @@ export const EditProduct = ({ products, setProducts }) => {
     );
     navigate("/products/show");
   };
+  const [form] = Form.useForm();
   return (
     <>
       <Typography.Title level={4}>Edit Product</Typography.Title>

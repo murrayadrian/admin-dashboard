@@ -7,7 +7,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Login } from 'pages/Login'
 import { AddProduct, ShowProducts } from 'pages/Product'
 import { OrderList } from 'pages/Order'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ProductDetail } from 'pages/Product'
 import { EditProduct } from 'pages/Product'
 import api from "api/config"
@@ -16,11 +16,20 @@ const App = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [image, setImage] = useState('')
-    
+
+    useEffect(() => {
+        console.log("fetch products");
+        const fetchProduct = async () => {
+            const response = await api.get('/products')
+            setProducts(response.data)
+        }
+        fetchProduct()
+    }, [])
+
     const handleDelete = async(id) => {
         await api.delete(`/products/${id}`)
-        const fillter = products.filter((product) => product.id.toString !== id);
-        setProducts(fillter)
+        const fillter = products.filter((product) => product.id !== id);
+        setProducts(fillter);
     }
     return (
         <Routes>
