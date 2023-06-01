@@ -1,12 +1,20 @@
 import { Button } from "antd";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import api from 'api/config'
 
-//ASK QUESTION
-export const ProductDetail = ({ products, handleDelete }) => {
+export const ProductDetail = () => {
   const { id } = useParams();
-  console.log(products);
-  const product = products.find((product) => product.id.toString() === id);
+  const [product, setProduct] = useState([])
+  useEffect(()=>{
+    const getProduct = async()=>{
+      const res = await api.get(`/products/${id}`);
+      const product = await res.data;
+      setProduct(product)
+    }
+    getProduct()
+  },[])
   return (
     <>
       <h2>Product Detail</h2>
@@ -25,21 +33,15 @@ export const ProductDetail = ({ products, handleDelete }) => {
               <td>{product.name}</td>
               <td>{product.price}</td>
               <td>
-                <img src={product.img} alt="img" style={imgStyle} />
+                <img src={product.image} alt="img" style={imgStyle} />
               </td>
               <td>
-                <Button style={linkStyle}>
+                <Button style={greenBtn}>
                   <Link to={`/products/edit/${product.id}`}>Update</Link>
                 </Button>
               </td>
               <td>
-                <Button
-                  onClick={() => handleDelete(product.id)}
-                  type="primary"
-                  danger
-                >
-                  Delete
-                </Button>
+              <Button type="primary" danger><Link to={`/products/delete/${product.id}`}>Delete</Link></Button>
               </td>
             </tr>
           </tbody>
@@ -64,7 +66,7 @@ const imgStyle = {
   width: 50,
   height: 50,
 };
-const linkStyle = {
+const greenBtn = {
   color: "rgba(0, 0, 0, 0.88)",
   backgroundColor: "green",
 };

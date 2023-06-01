@@ -3,35 +3,35 @@ import api from "api/config";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const EditProduct = ({ products, setProducts }) => {
+export const EditProduct = () => {
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState(0);
   const [editImage, setEditImage] = useState("");
+ 
   const navigate = useNavigate();
   const { id } = useParams();
-  const product = products.find((product) => product.id.toString() === id);
 
   useEffect(() => {
-    if (product) {
-      setEditName(product.name);
-      setEditPrice(product.price);
-      setEditImage(product.img);
+    const getProduct = async()=>{
+      const res = await api.get(`/products/${id}`);
+      const product = await res.data;
+      if(product){
+        setEditName(product.name)
+        setEditPrice(product.price)
+        setEditImage(product.image)
+      }
     }
-  }, [product]);
+    getProduct()
+    },[])
   
-  const handleEdit = async (id) => {
+  const handleSubmit = async (id) => {
     const updatedProduct = {
       id,
       name: editName,
       price: editPrice,
-      img: editImage,
+      image: editImage,
     };
-    const response = await api.put(`/products/${id}`, updatedProduct);
-    setProducts(
-      products.map((product) =>
-        product.id.toString() === id ? { ...response.data } : product
-      )
-    );
+    await api.put(`/products/${id}`, updatedProduct);
     navigate("/products/show");
   };
   const [form] = Form.useForm();
@@ -61,7 +61,7 @@ export const EditProduct = ({ products, setProducts }) => {
           />
         </Form.Item>
         <Form.Item {...buttonItemLayout}>
-          <Button type="primary" onClick={() => handleEdit(product.id)}>
+          <Button type="primary" onClick={() => handleSubmit(id)}>
             Update
           </Button>
         </Form.Item>

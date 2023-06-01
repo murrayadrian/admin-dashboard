@@ -1,16 +1,28 @@
 import { Button, Form, Input, Typography } from "antd"
 import api from 'api/config'
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const AddProduct = ({ products, setProducts, name, setName, price, setPrice, image, setImage }) => {
+export const AddProduct = () => {
+    const [products, setProducts] = useState([])
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState(0)
+    const [image, setImage] = useState('')
+    useEffect(()=>{
+        const getProducts = async()=>{
+            const res = await api.get("/products")
+            const products = await res.data
+            setProducts(products)
+        }
+        getProducts()
+    },[])
     const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = products.length ? products[products.length - 1].key + 1 : 1;
-        const newProduct = { id, name, price, img: image }
-        const response = await api.post('/products', newProduct)
-        const listProduct = [...products, response.data]
-        setProducts(listProduct)
+        const newProduct = { id, name, price, image }
+        await api.post('/products', newProduct)
         setName('')
         setPrice(0)
         setImage('')
