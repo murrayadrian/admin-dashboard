@@ -45,7 +45,7 @@ export const Layouts = () => {
   return (
     <>
     <Helmet>
-      <title>vinh</title>
+      <title>Dashboard</title>
     </Helmet>
     <Layout style={{ minHeight: '100vh', }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>

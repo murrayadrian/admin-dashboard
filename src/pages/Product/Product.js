@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import { Link } from "react-router-dom"
-
 //this is one of many products inside ShowProducts
 export const Product = ({product}) => {
   return (
@@ -21,4 +20,4 @@ const imgStyle = {
 const greenBtn = {
   color: "rgba(0, 0, 0, 0.88)",
   backgroundColor: "green",
-};
+}

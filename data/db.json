@@ -23,32 +23,33 @@
     {
       "id": 1,
       "name": "vinh",
-      "userName": "trungvinh812",
-      "passWord": "abc123"
+      "userName": "vinh",
+      "passWord": "abc123",
+      "role": "customer"
     },
     {
       "id": 2,
       "name": "trung",
-      "userName": "trung",
-      "passWord": "abc123"
+      "userName": "a",
+      "passWord": "a",
+      "role": "customer"
     },
     {
       "id": 3,
-      "name": "vinh",
-      "userName": "vinh",
-      "passWord": "abc123"
+      "name": "a",
+      "userName": "a",
+      "passWord": "a",
+      "role": "customer"
     },
     {
       "id": 4,
       "name": "a",
-      "userName": "a",
-      "passWord": "a"
+      "role": "customer"
     },
     {
       "id": 5,
-      "name": "a",
-      "userName": "a",
-      "passWord": "a"
+      "name": "c",
+      "role": "customer"
     }
   ],
   "orders": [],

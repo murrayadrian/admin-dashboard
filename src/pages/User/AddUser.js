@@ -6,8 +6,8 @@ export const AddUser = () => {
     const dispatch = useDispatch().userStore;
     const navigate = useNavigate()
     const [form] = Form.useForm();
-    const onFinish = (user) => {
-        dispatch.addUser(user)
+    const onFinish = async (user) => {
+        await dispatch.addUser(user)
         navigate("/users/list")
       };
     return (
