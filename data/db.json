@@ -18,5 +18,27 @@
       "name": "trung",
       "age": "22"
     }
-  ]
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "vinh",
+      "userName": "trungvinh812",
+      "passWord": "abc123"
+    },
+    {
+      "id": 2,
+      "name": "trung",
+      "userName": "trung",
+      "passWord": "abc123"
+    },
+    {
+      "id": 3,
+      "name": "vinh",
+      "userName": "vinh",
+      "passWord": "abc123"
+    }
+  ],
+  "orders": [],
+  "coupon": []
 }

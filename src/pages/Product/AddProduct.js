@@ -20,7 +20,7 @@ export const AddProduct = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const id = products.length ? products[products.length - 1].key + 1 : 1;
+        const id = products.length ? products[products.length - 1].id + 1 : 1;
         const newProduct = { id, name, price, image }
         await api.post('/products', newProduct)
         setName('')

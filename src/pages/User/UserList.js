@@ -2,14 +2,10 @@ import { Table } from "antd";
 import { useEffect, useState } from "react";
 import { getUsers } from "api";
 
-const imgStyle = {
-    width: 100,
-    height: 100
-}
 export const UserList = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
-    
+
     useEffect(()=>{
       setLoading(true)
       getUsers().then((res)=>{
@@ -23,6 +19,7 @@ export const UserList = () => {
             <Table
             loading={loading}
             columns={columns}
+            rowKey="id"
             dataSource={users}
             pagination={{pageSize: 5}}
             />
@@ -59,3 +56,8 @@ const columns = [
       render:(value)=><img style={imgStyle} src={value} alt='img'/>,
     }
   ];
+
+  const imgStyle = {
+    width: 100,
+    height: 100
+}

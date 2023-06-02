@@ -16,29 +16,25 @@ function getItem(label, key, icon, children) {
 
 const items = [
   getItem('Welcome vinh', '1', <UserOutlined />),
-  getItem(<NavLink to={'/'}>DashBoard</NavLink>, '2', <DesktopOutlined />),
+  getItem(<NavLink to={'/'}>Home</NavLink>, '2', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
-    getItem(<NavLink to={'/user/list'}>List Users</NavLink>, '3'),
-    getItem(<NavLink to={'/user/add'}>Add user</NavLink>, '4'),
+    getItem(<NavLink to={'/users/list'}>List Users</NavLink>, '3'),
+    getItem(<NavLink to={'/users/add'}>Add user</NavLink>, '4'),
   ]),
 
   getItem('Product', 'sub3', <TeamOutlined />, [
     getItem(<NavLink to={'/products/show'}>Show Products</NavLink>, '5'),
     getItem(<NavLink to={'/products/add'}>Add product</NavLink>, '6'),
   ]),
-
-  getItem('Customer', 'sub2', <TeamOutlined />, [
-    getItem(<NavLink to={'/customer/list'}>List Customers</NavLink>, '7'),
-    getItem(<NavLink to={'/customer/export'}>Export to excel</NavLink>, '8')
-  ]),
+  getItem(<NavLink to={'/customers'}>Customers</NavLink>, '7',<TeamOutlined />),
 
   getItem('Order', 'sub4', <TeamOutlined />, [
-    getItem(<NavLink to={'/order/list'}>List Orders</NavLink>, '9'),
+    getItem(<NavLink to={'/orders/list'}>List Orders</NavLink>, '98'),
   ]),
 
   getItem('Coupon', 'sub5', <TeamOutlined />, [
-    getItem(<NavLink to={'/coupon/list'}>List Coupons</NavLink>, '10'),
-    getItem(<NavLink to={'/coupon/add'}>Add new coupon</NavLink>, '11'),
+    getItem(<NavLink to={'/coupons/list'}>List Coupons</NavLink>, '9'),
+    getItem(<NavLink to={'/coupons/add'}>Add new coupon</NavLink>, '10'),
   ]),
 ];
 export const Layouts = () => {
@@ -59,10 +55,6 @@ export const Layouts = () => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer, }}>Header</Header>
         <Content style={{ margin: '0 16px', }}>
-          {/* <Breadcrumb style={{ margin: '16px 0', }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb> */}
           <div style={{ padding: 24 }}>
             <Outlet />
           </div>
