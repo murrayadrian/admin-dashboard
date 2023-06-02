@@ -5,7 +5,7 @@ import { getUsers } from "api";
 export const UserList = () => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
-
+    
     useEffect(()=>{
       setLoading(true)
       getUsers().then((res)=>{

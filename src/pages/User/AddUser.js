@@ -7,8 +7,8 @@ export const AddUser = () => {
     const navigate = useNavigate()
     const [form] = Form.useForm();
     const onFinish = (user) => {
-         dispatch.addUser(user);
-        // navigate("/users/list")
+        dispatch.addUser(user)
+        navigate("/users/list")
       };
     return (
         <div>

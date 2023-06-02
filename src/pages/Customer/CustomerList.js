@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { ExportCustomer } from "./ExportCustomer";
 
 export const CustomerList = () => {
-  const state = useSelector((store) => store.customerStore)
-  const customers = state.customers;
+  const customerStore = useSelector((state) => state.customerStore)
+  const customers = customerStore.customers;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch.customerStore.getCustomers()
