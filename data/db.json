@@ -5,15 +5,9 @@
       "name": "samsung",
       "price": "200",
       "image": "https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-bac-org.png"
-    },
-    {
-      "id": 2,
-      "name": "iphone",
-      "price": "1000",
-      "image": "https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-bac-org.png"
     }
   ],
-  "customers":[
+  "customers": [
     {
       "id": 1,
       "name": "duong",

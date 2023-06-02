@@ -15,7 +15,7 @@ export const ShowProducts = () => {
 
     return (
         <>
-        {products.length==0?
+        {products.length===0?
             <h2>No products was found</h2> :
             <STable>
                 <thead>

@@ -11,7 +11,7 @@ export const DeleteProduct = () => {
             navigate("/products/show")
         }
         remove()
-    },[])
+    },[id, navigate])
   return (
     <div>DeleteProduct</div>
   )

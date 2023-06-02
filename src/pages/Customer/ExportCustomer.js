@@ -1,18 +1,18 @@
 import Excel from "components/Excel"
-import api from 'api/config'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Button } from "antd"
-
+import { useSelector, useDispatch } from "react-redux"
 
 export const ExportCustomer = () => {
-  const [ customers, setCustomers] = useState([])
-  useEffect(()=>{
-    const getCustomers = async() =>{
-      const res = await api.get("/customers")
-      setCustomers(res.data)
-    }
-    getCustomers()
-  },[])
+
+  const customerStore = useSelector((state) => state.customerStore)
+  const customers = customerStore.customers;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch.customerStore.getCustomers()
+  },[dispatch.customerStore])
+
   const data=[
     {
       columns: [

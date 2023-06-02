@@ -14,7 +14,7 @@ export const ProductDetail = () => {
       setProduct(product)
     }
     getProduct()
-  },[])
+  },[id])
   return (
     <>
       <h2>Product Detail</h2>

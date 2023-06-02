@@ -22,7 +22,7 @@ export const EditProduct = () => {
       }
     }
     getProduct()
-    },[])
+    },[id, navigate])
   
   const handleSubmit = async (id) => {
     const updatedProduct = {
