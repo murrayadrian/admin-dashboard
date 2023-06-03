@@ -2,9 +2,10 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 
 
-export const UpdateButton = () => {
+export const DeleteUser = ({user}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
+        console.log(user);
         setIsModalOpen(true);
     };
     const handleOk = () => {
@@ -15,19 +16,13 @@ export const UpdateButton = () => {
     };
     return (
         <>
-            <Button style={updateBtn} type="primary" onClick={showModal}>
-                Update
+            <Button type="primary" danger onClick={showModal}>
+                Delete
             </Button>
 
-            <Modal title="Update" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Name</p>
-                <p>User</p>
-                <p>Password</p>
+            <Modal title="Delete" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <p>Are you sure to delete?</p>
             </Modal>
         </>
     )
 }
-const updateBtn = {
-    color: "rgba(0, 0, 0, 0.88)",
-    backgroundColor: "green",
-  }

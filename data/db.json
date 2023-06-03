@@ -23,33 +23,9 @@
     {
       "id": 1,
       "name": "vinh",
-      "userName": "vinh",
+      "userName": "trungvinh812",
       "passWord": "abc123",
-      "role": "customer"
-    },
-    {
-      "id": 2,
-      "name": "trung",
-      "userName": "a",
-      "passWord": "a",
-      "role": "customer"
-    },
-    {
-      "id": 3,
-      "name": "a",
-      "userName": "a",
-      "passWord": "a",
-      "role": "customer"
-    },
-    {
-      "id": 4,
-      "name": "a",
-      "role": "customer"
-    },
-    {
-      "id": 5,
-      "name": "c",
-      "role": "customer"
+      "role": "guest"
     }
   ],
   "orders": [],

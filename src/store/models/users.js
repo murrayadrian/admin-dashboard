@@ -22,7 +22,7 @@ export const userStore = {
             const users = await res.data;
             const length =  users.length;
             const id = length ? users[length - 1].id + 1 : 1;
-            const newUser = {id, name, userName, passWord, role:"customer"};
+            const newUser = {id, name, userName, passWord, role:"guest"};
             await api.post("/users",newUser);
         }
     })
