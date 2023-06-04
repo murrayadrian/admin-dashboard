@@ -1,3 +1,4 @@
 import {customerStore} from './customers'
 import {userStore} from './users'
-export {customerStore, userStore}
+import {orderStore} from './orders'
+export {customerStore, userStore, orderStore}

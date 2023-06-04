@@ -1,4 +1,20 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "vinh",
+      "userName": "trungvinh812",
+      "passWord": "abc123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "trung vinh",
+      "userName": "vinh",
+      "passWord": "a",
+      "role": "guest"
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -19,22 +35,23 @@
       "age": "22"
     }
   ],
-  "users": [
+  "orders": [
     {
       "id": 1,
-      "name": "vinhvssfasdsad",
-      "userName": "trungvinh812",
-      "passWord": "abc123",
-      "role": "guest"
-    },
-    {
-      "id": 2,
-      "name": "trung vinh",
-      "userName": "vinh",
-      "passWord": "a",
-      "role": "guest"
+      "userId": 1,
+      "productId": 1,
+      "qty": 20,
+      "status": "ordered"
     }
   ],
-  "orders": [],
-  "coupon": []
+  "coupon": [
+    {
+      "id": 1,
+      "discount": 0.01
+    },
+    {
+      "id": 1,
+      "discount": 0.02
+    }
+  ]
 }

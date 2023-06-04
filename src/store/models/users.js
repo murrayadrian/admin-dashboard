@@ -24,6 +24,14 @@ export const userStore = {
                ...state, users
             }
         },
+        updateUserRole(state, user) {
+            const users = [...state.users]
+            const updateUser = users.find((item) => item.id === user.id)
+            updateUser.role = user.role;
+            return {
+                ...state, users
+            }
+        },
         removeUser(state, id) {
             const users = [...state.users]
             users.splice((id - 1), 1)
@@ -60,7 +68,7 @@ export const userStore = {
         },
         async assignAdmin(user) {
             await api.put(`/users/${user.id}`, user);
-            await this.updateUsersState(user);
+            await this.updateUserRole(user);
         }
     })
 }
