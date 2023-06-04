@@ -17,7 +17,7 @@ export const userStore = {
                 ...state, user
             }
         },
-        updateUserList(state, user) {
+        updateUsersState(state, user) {
             const users = [...state.users]
             users.splice((user.id - 1), 1, user);
             return {
@@ -52,11 +52,15 @@ export const userStore = {
         async updateUser(user) {
             await api.put(`/users/${user.id}`, user);
             await this.setUser(user);
-            await this.updateUserList(user);
+            await this.updateUsersState(user);
         },
         async deleteUser(id) {
             await api.delete(`/users/${id}`);
             await this.removeUser(id);
+        },
+        async assignAdmin(user) {
+            await api.put(`/users/${user.id}`, user);
+            await this.updateUsersState(user);
         }
     })
 }

@@ -29,17 +29,12 @@ export const UserList = () => {
       width: 150,
     },
     {
-      title: 'Password',
-      dataIndex: 'passWord',
-      width: 150,
-    },
-    {
       title: 'Role',
       dataIndex: 'role',
       width: 150,
       render: (role) => (
         <Space size="middle">
-          <button style={{padding:8,border:'2px solid green', color:'green'}}>{role}</button>
+          <button style={role!=="admin"?guestStyle:adminStyle}>{role}</button>
         </Space>
       ),
     },
@@ -75,3 +70,13 @@ export const UserList = () => {
   )
 }
 
+const adminStyle = {
+  padding:8,
+  border:'2px solid red',
+  color:'red'
+}
+const guestStyle = {
+  padding:8,
+  border:'2px solid green',
+  color:'green'
+}
