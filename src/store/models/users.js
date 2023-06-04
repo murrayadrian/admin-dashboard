@@ -16,6 +16,20 @@ export const userStore = {
             return {
                 ...state, user
             }
+        },
+        updateUserList(state, user) {
+            const users = [...state.users]
+            users.splice((user.id - 1), 1, user);
+            return {
+               ...state, users
+            }
+        },
+        removeUser(state, id) {
+            const users = [...state.users]
+            users.splice((id - 1), 1)
+            return {
+                ...state, users
+            }
         }
     },
     effects :() => ({
@@ -38,9 +52,11 @@ export const userStore = {
         async updateUser(user) {
             await api.put(`/users/${user.id}`, user);
             await this.setUser(user);
+            await this.updateUserList(user);
         },
         async deleteUser(id) {
             await api.delete(`/users/${id}`);
+            await this.removeUser(id);
         }
     })
 }

@@ -29,9 +29,9 @@
     },
     {
       "id": 2,
-      "name": "trung",
-      "userName": "abc123",
-      "passWord": "as",
+      "name": "trung vinh",
+      "userName": "vinh",
+      "passWord": "a",
       "role": "guest"
     }
   ],
