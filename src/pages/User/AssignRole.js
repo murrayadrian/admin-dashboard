@@ -1,13 +1,13 @@
 import { Button, Space } from "antd"
 
 export const AssignRole = ({user}) => {
-    const handleClick = () => {
+    const handleAssign = () => {
         console.log(user);
     }
   return (
     <>
     <Space size="middle">
-        <Button type="primary" onClick={handleClick}>Assign role</Button>
+        <Button type="primary" onClick={handleAssign}>Assign role</Button>
     </Space>
     </>
   )

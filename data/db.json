@@ -26,6 +26,13 @@
       "userName": "trungvinh812",
       "passWord": "abc123",
       "role": "guest"
+    },
+    {
+      "id": 2,
+      "name": "trung",
+      "userName": "abc123",
+      "passWord": "as",
+      "role": "guest"
     }
   ],
   "orders": [],

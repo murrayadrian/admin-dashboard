@@ -56,7 +56,7 @@ export const UserList = () => {
       render: (id) => (
         <Space size="middle">
           <UpdateUser user={users[id - 1]}/>
-          <DeleteUser user={users[id - 1]}/>
+          <DeleteUser id={id}/>
         </Space>
       ),
     },
